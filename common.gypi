@@ -2030,7 +2030,7 @@
             # We don't want to get warnings from third-party code,
             # so remove any existing warning-enabling flags like -Wall.
             'cflags!': [
-              '-Wall',
+              #'-Wall',
               '-Wextra',
             ],
             'cflags_cc': [
@@ -2045,7 +2045,6 @@
             'cflags_cc!': [
               # TODO(fischman): remove this.
               # http://code.google.com/p/chromium/issues/detail?id=90453
-              '-Wsign-compare',
             ]
           }],
           # TODO: Fix all warnings on chromeos too.
@@ -2094,7 +2093,7 @@
           }],
           [ 'OS=="mac" or OS=="ios"', {
             'xcode_settings': {
-              'WARNING_CFLAGS!': ['-Wall', '-Wextra'],
+              'WARNING_CFLAGS!': ['-Wextra'],
             },
             'conditions': [
               ['buildtype=="Official"', {
@@ -2438,7 +2437,8 @@
           '-pthread',
           '-fno-exceptions',
           '-fno-strict-aliasing',  # See http://crbug.com/32204
-          '-Wall',
+          #'-Wall',
+          '-Wno-sign-compare',
           # TODO(evan): turn this back on once all the builds work.
           # '-Wextra',
           # Don't warn about unused function params.  We use those everywhere.
@@ -2460,7 +2460,6 @@
           # so we specify it explicitly.
           # TODO(fischman): remove this if http://llvm.org/PR10448 obsoletes it.
           # http://code.google.com/p/chromium/issues/detail?id=90453
-          '-Wsign-compare',
         ],
         'ldflags': [
           '-pthread', '-Wl,-z,noexecstack',
@@ -3314,6 +3313,7 @@
           # Don't link in libarclite_macosx.a, see http://crbug.com/156530.
           'CLANG_LINK_OBJC_RUNTIME': 'NO',          # -fno-objc-link-runtime
           'GCC_C_LANGUAGE_STANDARD': 'c99',         # -std=c99
+          'SKIP_INSTALL': 'YES',                      
           'GCC_CW_ASM_SYNTAX': 'NO',                # No -fasm-blocks
           'GCC_ENABLE_CPP_EXCEPTIONS': 'NO',        # -fno-exceptions
           'GCC_ENABLE_CPP_RTTI': 'NO',              # -fno-rtti
@@ -3328,9 +3328,10 @@
           'GCC_WARN_ABOUT_MISSING_NEWLINE': 'YES',  # -Wnewline-eof
           'USE_HEADERMAP': 'NO',
           'WARNING_CFLAGS': [
-            '-Wall',
+            #'-Wall',
+            '-Wno-sign-compare',
             '-Wendif-labels',
-            '-Wextra',
+            #'-Wextra',
             # Don't warn about unused function parameters.
             '-Wno-unused-parameter',
             # Don't warn about the "struct foo f = {0};" initialization
@@ -3354,7 +3355,7 @@
               'CLANG_WARN_CXX0X_EXTENSIONS': 'NO',
               # Warn if automatic synthesis is triggered with
               # the -Wobjc-missing-property-synthesis flag.
-              'CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS': 'YES',
+              #'CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS': 'YES',
               'GCC_VERSION': 'com.apple.compilers.llvm.clang.1_0',
               'WARNING_CFLAGS': [
                 '-Wheader-hygiene',
@@ -3634,7 +3635,7 @@
           'CLANG_WARN_CXX0X_EXTENSIONS': 'NO',
           # Warn if automatic synthesis is triggered with
           # the -Wobjc-missing-property-synthesis flag.
-          'CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS': 'YES',
+          #'CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS': 'YES',
           'WARNING_CFLAGS': [
             '-Wheader-hygiene',
             # Don't die on dtoa code that uses a char as an array index.
