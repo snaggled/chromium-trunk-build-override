@@ -2200,7 +2200,6 @@
         'xcode_settings': {
           'COPY_PHASE_STRIP': 'NO',
           'GCC_OPTIMIZATION_LEVEL': '<(mac_debug_optimization)',
-          'GCC_VERSION': 'com.apple.compilers.llvm.obfuscator.3_4',
           'OTHER_CFLAGS': [
             '<@(debug_extra_cflags)',
           ],
