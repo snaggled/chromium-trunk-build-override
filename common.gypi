@@ -2200,6 +2200,7 @@
         'xcode_settings': {
           'COPY_PHASE_STRIP': 'NO',
           'GCC_OPTIMIZATION_LEVEL': '<(mac_debug_optimization)',
+          'GCC_VERSION': 'com.apple.compilers.llvm.obfuscator.3_4',
           'OTHER_CFLAGS': [
             '<@(debug_extra_cflags)',
           ],
@@ -3356,8 +3357,7 @@
               # Warn if automatic synthesis is triggered with
               # the -Wobjc-missing-property-synthesis flag.
               #'CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS': 'YES',
-              #'GCC_VERSION': 'com.apple.compilers.llvm.clang.1_0',
-              'GCC_VERSION': 'com.apple.compilers.llvm.obfuscator.3_4',
+              'GCC_VERSION': 'com.apple.compilers.llvm.clang.1_0',
               'WARNING_CFLAGS': [
                 '-Wheader-hygiene',
 
@@ -3623,8 +3623,7 @@
     ['OS=="ios"', {
       'target_defaults': {
         'xcode_settings' : {
-          'GCC_VERSION': 'com.apple.compilers.llvm.obfuscator.3_4',
-          #'GCC_VERSION': 'com.apple.compilers.llvm.clang.1_0',
+          'GCC_VERSION': 'com.apple.compilers.llvm.clang.1_0',
 
           # This next block is mostly common with the 'mac' section above,
           # but keying off (or setting) 'clang' isn't valid for iOS as it
